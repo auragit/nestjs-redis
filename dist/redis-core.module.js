@@ -15,6 +15,7 @@ var RedisCoreModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RedisCoreModule = void 0;
 const common_1 = require("@nestjs/common");
+const config_1 = require("@nestjs/config");
 const redis_client_provider_1 = require("./redis-client.provider");
 const redis_constants_1 = require("./redis.constants");
 const redis_service_1 = require("./redis.service");
@@ -27,7 +28,7 @@ let RedisCoreModule = RedisCoreModule_1 = class RedisCoreModule {
         return {
             module: RedisCoreModule_1,
             providers: [
-                redis_client_provider_1.createClient(),
+                (0, redis_client_provider_1.createClient)(),
                 { provide: redis_constants_1.REDIS_MODULE_OPTIONS, useValue: options },
             ],
             exports: [redis_service_1.RedisService],
@@ -37,7 +38,7 @@ let RedisCoreModule = RedisCoreModule_1 = class RedisCoreModule {
         return {
             module: RedisCoreModule_1,
             imports: options.imports,
-            providers: [redis_client_provider_1.createClient(), redis_client_provider_1.createAsyncClientOptions(options)],
+            providers: [(0, redis_client_provider_1.createClient)(), (0, redis_client_provider_1.createAsyncClientOptions)(options)],
             exports: [redis_service_1.RedisService],
         };
     }
@@ -59,13 +60,14 @@ let RedisCoreModule = RedisCoreModule_1 = class RedisCoreModule {
     }
 };
 RedisCoreModule = RedisCoreModule_1 = __decorate([
-    common_1.Global(),
-    common_1.Module({
+    (0, common_1.Global)(),
+    (0, common_1.Module)({
         providers: [redis_service_1.RedisService],
         exports: [redis_service_1.RedisService],
+        imports: [config_1.ConfigModule],
     }),
-    __param(0, common_1.Inject(redis_constants_1.REDIS_MODULE_OPTIONS)),
-    __param(1, common_1.Inject(redis_constants_1.REDIS_CLIENT)),
+    __param(0, (0, common_1.Inject)(redis_constants_1.REDIS_MODULE_OPTIONS)),
+    __param(1, (0, common_1.Inject)(redis_constants_1.REDIS_CLIENT)),
     __metadata("design:paramtypes", [Object, Object])
 ], RedisCoreModule);
 exports.RedisCoreModule = RedisCoreModule;

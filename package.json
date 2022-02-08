@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^7.4.4",
+    "@nestjs/config": "^1.1.6",
     "@nestjs/core": "^7.4.4",
     "@types/ioredis": "*",
     "@types/uuid": "*",

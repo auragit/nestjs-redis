@@ -1,24 +1,23 @@
 import {
   DynamicModule,
-  Global,
-  Module,
-  Inject,
-  OnModuleDestroy,
+  Global, Inject, Module, OnModuleDestroy
 } from '@nestjs/common';
-import { RedisModuleAsyncOptions, RedisModuleOptions } from './redis.interface';
+import { ConfigModule } from '@nestjs/config';
 import {
   createAsyncClientOptions,
   createClient,
-  RedisClient,
+  RedisClient
 } from './redis-client.provider';
-
-import { REDIS_MODULE_OPTIONS, REDIS_CLIENT } from './redis.constants';
+import { REDIS_CLIENT, REDIS_MODULE_OPTIONS } from './redis.constants';
+import { RedisModuleAsyncOptions, RedisModuleOptions } from './redis.interface';
 import { RedisService } from './redis.service';
+
 
 @Global()
 @Module({
   providers: [RedisService],
   exports: [RedisService],
+  imports: [ConfigModule],
 })
 export class RedisCoreModule implements OnModuleDestroy {
   constructor(

@@ -1,6 +1,6 @@
 import { DynamicModule, OnModuleDestroy } from '@nestjs/common';
-import { RedisModuleAsyncOptions, RedisModuleOptions } from './redis.interface';
 import { RedisClient } from './redis-client.provider';
+import { RedisModuleAsyncOptions, RedisModuleOptions } from './redis.interface';
 export declare class RedisCoreModule implements OnModuleDestroy {
     private readonly options;
     private readonly redisClient;
