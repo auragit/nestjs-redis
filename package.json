@@ -1,7 +1,7 @@
 {
   "name": "nestjs-redis",
-  "version": "1.3.3",
-  "description": "a NestJS ioRedis module",
+  "version": "1.3.31",
+  "description": "a NestJS ioRedis module. fixed by me from: https://github.com/skunight/nestjs-redis/issues/82",
   "author": "skunight",
   "license": "MIT",
   "repository": {
